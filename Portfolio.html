@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Kirishoth Prabakaran, a software engineering student focused on full-stack web development.">
+  <title>Kirishoth Prabakaran | Software Engineer Intern</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --ink: #17201f; --muted: #5d6a68; --paper: #f5f6f1; --surface: #fff;
+      --line: #dfe5df; --accent: #e4572e; --accent-dark: #bd3e1d; --teal: #087f8c;
+      --max-width: 1160px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--paper); color: var(--ink); font-family: 'DM Sans', sans-serif; line-height: 1.6; }
+    a { color: inherit; }
+    .container { width: min(var(--max-width), calc(100% - 3rem)); margin: 0 auto; }
+    nav { background: rgba(245,246,241,.94); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; backdrop-filter: blur(12px); }
+    .nav-inner { align-items: center; display: flex; justify-content: space-between; min-height: 76px; }
+    .brand { font: 700 1.2rem 'Space Grotesk', sans-serif; text-decoration: none; letter-spacing: -.03em; }
+    .brand span { color: var(--accent); }
+    .nav-links { display: flex; gap: 1.4rem; list-style: none; }
+    .nav-links a { color: var(--muted); font-size: .9rem; text-decoration: none; }
+    .nav-links a:hover, .nav-links a:focus { color: var(--accent-dark); }
+    .hero { border-bottom: 1px solid var(--line); overflow: hidden; padding: 7.5rem 0 6rem; position: relative; }
+    .hero::before { background-image: linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px); background-size: 44px 44px; content: ''; inset: 0 0 0 58%; opacity: .55; position: absolute; mask-image: linear-gradient(90deg,transparent,black); }
+    .hero-grid { align-items: end; display: grid; gap: 4rem; grid-template-columns: 1.2fr .8fr; position: relative; }
+    .eyebrow { color: var(--accent-dark); font: 600 .75rem 'Space Grotesk',sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+    h1,h2,h3 { font-family: 'Space Grotesk',sans-serif; letter-spacing: -.045em; }
+    h1 { font-size: clamp(3rem,7vw,6.2rem); line-height: .98; margin: 1.1rem 0 1.5rem; max-width: 720px; }
+    .hero-copy { color: var(--muted); font-size: 1.14rem; max-width: 610px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; }
+    .button { align-items: center; background: var(--accent); color: #fff; display: inline-flex; gap: .55rem; padding: .8rem 1.15rem; text-decoration: none; font-weight: 700; }
+    .button:hover { background: var(--accent-dark); }
+    .button.secondary { background: transparent; border: 1px solid var(--ink); color: var(--ink); }
+    .button.secondary:hover { background: var(--ink); color: #fff; }
+    .hero-note { border-left: 3px solid var(--teal); margin-left: auto; max-width: 260px; padding: 1rem 0 1rem 1.2rem; }
+    .hero-note strong { display: block; font: 700 2.7rem 'Space Grotesk',sans-serif; line-height: 1; }
+    .hero-note p { color: var(--muted); font-size: .85rem; margin-top: .55rem; }
+    .hero-side { align-items: center; display: flex; flex-direction: column; gap: 1.5rem; }
+    .profile-photo { border: 10px solid var(--surface); box-shadow: 18px 18px 0 var(--teal); display: block; height: 270px; overflow: hidden; transform: rotate(2deg); transition: transform .35s ease, box-shadow .35s ease; width: 230px; }
+    .profile-photo:hover { box-shadow: 10px 10px 0 var(--accent); transform: rotate(0) translateY(-5px); }
+    .profile-photo img { display: block; height: 100%; object-fit: cover; width: 100%; }
+    section { border-bottom: 1px solid var(--line); padding: 5.5rem 0; }
+    .section-heading { align-items: end; display: flex; justify-content: space-between; margin-bottom: 2.2rem; }
+    .section-heading h2 { font-size: clamp(2rem,4vw,3.2rem); line-height: 1; }
+    .section-heading p { color: var(--muted); font-size: .9rem; max-width: 330px; text-align: right; }
+    .about-grid { display: grid; gap: 3rem; grid-template-columns: 1.2fr .8fr; }
+    .lead { font-size: 1.45rem; line-height: 1.35; max-width: 700px; }
+    .about-copy p + p { color: var(--muted); margin-top: 1.2rem; max-width: 680px; }
+    .facts { border-top: 1px solid var(--ink); }
+    .fact { border-bottom: 1px solid var(--line); display: flex; gap: 1rem; justify-content: space-between; padding: .85rem 0; }
+    .fact span:first-child { color: var(--muted); }
+    .fact span:last-child { font-weight: 600; text-align: right; }
+    .skills { display: grid; gap: 1rem; grid-template-columns: repeat(4,1fr); }
+    .skill { background: var(--surface); border: 1px solid var(--line); padding: 1.35rem; }
+    .skill i { color: var(--teal); font-size: 1.2rem; }
+    .skill h3 { font-size: 1.05rem; margin: .9rem 0 .45rem; }
+    .skill p { color: var(--muted); font-size: .85rem; }
+    .tool-row { border-top: 1px solid var(--line); color: var(--muted); margin-top: 2rem; padding-top: 1.2rem; }
+    .tool-row strong { color: var(--ink); margin-right: .7rem; }
+    .projects { display: grid; gap: 1.2rem; grid-template-columns: repeat(2,1fr); }
+    .project { background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; min-height: 350px; padding: 1.7rem; }
+    .project.featured { border-top: 4px solid var(--accent); }
+    .project-meta { color: var(--accent-dark); display: flex; font: 600 .75rem 'Space Grotesk',sans-serif; justify-content: space-between; letter-spacing: .08em; text-transform: uppercase; }
+    .project h3 { font-size: 1.7rem; margin: 2rem 0 .7rem; }
+    .project p { color: var(--muted); font-size: .92rem; max-width: 530px; }
+    .project ul { color: var(--ink); font-size: .86rem; list-style: none; margin-top: 1.2rem; }
+    .project li { margin-top: .35rem; }
+    .project li::before { color: var(--teal); content: '>'; font-weight: 700; margin-right: .55rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: auto; padding-top: 1.5rem; }
+    .tag { background: #e7f1ef; color: #14636b; font: 600 .72rem 'Space Grotesk',sans-serif; padding: .35rem .6rem; }
+    .resume-grid { display: grid; gap: 3rem; grid-template-columns: 1fr 1fr; }
+    .resume-block { border-top: 2px solid var(--ink); padding-top: 1.1rem; }
+    .resume-block h3 { font-size: 1.25rem; margin-bottom: 1rem; }
+    .resume-block p { color: var(--muted); }
+    .achievement { border-bottom: 1px solid var(--line); padding: 1rem 0; }
+    .achievement strong { display: block; }
+    .achievement span { color: var(--muted); font-size: .88rem; }
+    .certification { color: var(--muted); display: flex; gap: .9rem; margin-top: 1.3rem; }
+    .certification i { color: var(--accent); margin-top: .3rem; }
+    .activities { display: grid; gap: 1.2rem; grid-template-columns: repeat(2,1fr); }
+    .activity { background: var(--surface); border: 1px solid var(--line); overflow: hidden; }
+    .activity-gallery { display: grid; gap: .7rem; grid-template-columns: 1.25fr .75fr; }
+    .activity-gallery img { display: block; height: 310px; object-fit: cover; width: 100%; }
+    .activity-gallery a:nth-child(2) img { height: 310px; }
+    .activity-gallery a { overflow: hidden; }
+    .activity-gallery img { animation: event-image-in 700ms ease-out both; transition: transform .35s ease, filter .35s ease; }
+    .activity-gallery a:nth-child(2) img { animation-delay: 140ms; }
+    .activity-gallery a:hover img { filter: saturate(1.12); transform: scale(1.04); }
+    @keyframes event-image-in { from { opacity: 0; transform: translateY(14px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    .activity-image { display: block; }
+    .activity-image:hover { opacity: .88; }
+    .activity-content { padding: 1.5rem 1.7rem 1.7rem; }
+    .activity-meta { color: var(--teal); font: 600 .75rem 'Space Grotesk',sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+    .activity h3 { font-size: 1.55rem; margin: .65rem 0 .55rem; }
+    .activity p { color: var(--muted); font-size: .92rem; }
+    .activity p + p { margin-top: .75rem; }
+    .activity-preview { color: var(--ink) !important; font-size: 1rem !important; max-width: 760px; }
+    .show-all { background: transparent; border: 1px solid var(--ink); color: var(--ink); cursor: pointer; font: 700 .82rem 'DM Sans', sans-serif; margin-top: 1.2rem; padding: .7rem 1rem; }
+    .show-all:hover { background: var(--ink); color: #fff; }
+    .activity-details { border-top: 1px solid var(--line); display: grid; grid-template-rows: 0fr; margin-top: 1.5rem; opacity: 0; transition: grid-template-rows .4s ease, opacity .25s ease, padding-top .4s ease; }
+    .activity-details > div { overflow: hidden; }
+    .activity.is-expanded .activity-details { grid-template-rows: 1fr; opacity: 1; padding-top: 1.25rem; }
+    .activity-details a { color: var(--accent-dark); font-weight: 700; }
+    .contact { background: var(--ink); color: #fff; padding: 4rem; }
+    .contact-grid { align-items: end; display: grid; gap: 2rem; grid-template-columns: 1fr 1fr; }
+    .contact h2 { font-size: clamp(2.2rem,5vw,4rem); line-height: 1; }
+    .contact p { color: #b9c5c1; margin-top: 1rem; max-width: 430px; }
+    .contact-links { display: grid; gap: .7rem; justify-self: end; }
+    .contact-links a { color: #fff; text-decoration: none; }
+    .contact-links a:hover { color: #ff987d; }
+    .contact-links i { color: #ff987d; margin-right: .65rem; width: 1rem; }
+    footer { color: var(--muted); font-size: .8rem; padding: 1.5rem 0; }
+    @media (max-width: 800px) {
+      .container { width: min(var(--max-width),calc(100% - 2rem)); }
+      .nav-inner { align-items: flex-start; flex-direction: column; gap: .7rem; padding: 1rem 0; }
+      .nav-links { gap: .8rem; overflow-x: auto; width: 100%; }
+      .hero { padding: 5rem 0 4rem; }
+      .hero-grid,.about-grid,.resume-grid,.contact-grid { grid-template-columns: 1fr; }
+      .hero-grid { gap: 2.5rem; }
+      .hero-note { margin-left: 0; }
+      .skills { grid-template-columns: repeat(2,1fr); }
+      .section-heading { align-items: flex-start; flex-direction: column; gap: .8rem; }
+      .section-heading p { text-align: left; }
+      .contact { padding: 2rem 1.4rem; }
+      .contact-links { justify-self: start; }
+    }
+    @media (max-width: 520px) {
+      .skills,.projects { grid-template-columns: 1fr; }
+      .activities { grid-template-columns: 1fr; }
+      .activity-gallery { grid-template-columns: 1fr; }
+      .activity-gallery img, .activity-gallery a:nth-child(2) img { height: 230px; }
+      section { padding: 4rem 0; }
+      .hero-actions .button { justify-content: center; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <nav><div class="container nav-inner">
+    <a class="brand" href="#top">Kirishoth<span>.</span>dev</a>
+    <ul class="nav-links" aria-label="Primary navigation">
+      <li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li><li><a href="#achievements">Achievements</a></li><li><a href="#activities">Activities</a></li><li><a href="#certificates">Certificates</a></li><li><a href="#contact">Contact</a></li>
+    </ul>
+  </div></nav>
+  <main id="top">
+    <header class="hero"><div class="container hero-grid">
+      <div><p class="eyebrow">Software Engineer Intern / Full-stack Developer</p><h1>Building useful software with care.</h1><p class="hero-copy">I’m Kirishoth Prabakaran, a motivated software engineering undergraduate focused on building practical web and mobile applications with Flutter, JavaScript, Node.js, and databases.</p><div class="hero-actions"><a class="button" href="#projects">View my work <i class="fas fa-arrow-down"></i></a><a class="button secondary" href="mailto:krishothprabakaran@gmail.com">Contact me <i class="fas fa-arrow-up-right-from-square"></i></a></div></div>
+      <div class="hero-side"><a class="profile-photo" href="https://drive.google.com/file/d/1lfcXeE85gPoSj7fwG9oflMAxy8EKRHk4/view" target="_blank" rel="noreferrer"><img src="https://drive.google.com/thumbnail?id=1lfcXeE85gPoSj7fwG9oflMAxy8EKRHk4&amp;sz=w800" alt="Portrait of Kirishoth Prabakaran"></a><div class="hero-note"><strong>Kirishoth</strong><p>Software Engineering undergraduate and Secretary of Rotaract Jaffna Heritage.</p></div></div>
+    </div></header>
+    <section id="about"><div class="container"><div class="section-heading"><h2>About</h2><p>A developer who thinks about both the system and the people using it.</p></div><div class="about-grid"><div class="about-copy"><p class="lead">I enjoy turning practical problems into maintainable products, from mobile experiences and APIs to responsive interfaces.</p><p>My strongest work has been collaborative software development. I care about readable code, thoughtful communication, and learning quickly when the problem is new.</p></div><div class="facts"><div class="fact"><span>Currently</span><span>BSc (Hons) Software Engineering</span></div><div class="fact"><span>University</span><span>SLIIT Northern Uni</span></div><div class="fact"><span>Based in</span><span>Nallur, Jaffna</span></div><div class="fact"><span>Availability</span><span>Software Engineer Intern</span></div></div></div></div></section>
+    <section id="skills"><div class="container"><div class="section-heading"><h2>Technical skills</h2><p>The tools I use to take a product from idea to working interface.</p></div><div class="skills"><article class="skill"><i class="fas fa-layer-group"></i><h3>Frontend & Mobile</h3><p>Flutter, Dart, JavaScript ES6+, HTML5, CSS3, Bootstrap, responsive UI</p></article><article class="skill"><i class="fas fa-server"></i><h3>Backend</h3><p>Node.js, Express.js, PHP, RESTful APIs, CRUD architecture</p></article><article class="skill"><i class="fas fa-database"></i><h3>Data</h3><p>PostgreSQL, MongoDB Atlas, MySQL, schema design, database queries</p></article><article class="skill"><i class="fas fa-screwdriver-wrench"></i><h3>Workflow</h3><p>Git, GitHub, Postman, Agile collaboration, object-oriented programming</p></article></div><p class="tool-row"><strong>Also familiar with</strong> Java · React.js (Basic) · Data Structures · Algorithms</p></div></section>
+    <section id="projects"><div class="container"><div class="section-heading"><h2>Selected work</h2><p>Projects that show product thinking, implementation, and measurable scope.</p></div><div class="projects">
+      <article class="project featured"><div class="project-meta"><span>01 / Full-stack mobile</span><span>2026</span></div><h3>Smart Pharmacy Network</h3><p>A centralized platform connecting patients, doctors, and pharmacies to improve medicine access and healthcare services across the Jaffna region.</p><ul><li>Enabled medicine search, price comparison, real-time stock availability, and nearby pharmacy discovery.</li><li>Implemented secure digital prescriptions and automated inventory alerts.</li><li>Designed the product around reducing travel time and improving pharmacy operations.</li></ul><div class="tags"><span class="tag">Flutter</span><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">PostgreSQL</span><span class="tag">REST API</span></div></article>
+      <article class="project"><div class="project-meta"><span>02 / E-commerce</span><span>2025</span></div><h3>WheelBay</h3><p>An automotive e-commerce platform for browsing and purchasing brand-new vehicles through a user-friendly online interface.</p><ul><li>Designed responsive pages for vehicle listings, product details, and customer interactions.</li><li>Built a modern dark-themed UI for a clear browsing experience.</li><li>Implemented dynamic website functionality with PHP and JavaScript.</li></ul><div class="tags"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">PHP</span></div></article>
+    </div></div></section>
+    <section id="achievements"><div class="container"><div class="section-heading"><h2>Achievements</h2><p>Competitive results that reflect problem-solving, teamwork, and delivery under pressure.</p></div><div class="resume-grid"><div class="resume-block"><h3>Recognition</h3><div class="achievement"><strong>1st Place, SLIIT CodeArt 2024</strong><span>University-wide competition · 20+ teams · LKR 100,000 prize</span></div><div class="achievement"><strong>Top 10, SLIIT Algothon 2024</strong><span>Ranked 9th among 50+ participants in data structures and optimisation problems</span></div></div><div class="resume-block"><h3>Education</h3><p><strong>BSc (Hons) in Software Engineering</strong><br>SLIIT Northern Uni · 2024–present</p><p style="margin-top:1.2rem;">Coursework includes object-oriented programming, web programming, database management systems, software engineering principles, data structures and algorithms, Agile methods, and app development.</p><p style="margin-top:1.2rem;"><strong>Languages</strong><br>Tamil (native / full professional proficiency) · English (professional working proficiency)</p></div></div></div></section>
+    <section id="activities"><div class="container"><div class="section-heading"><h2>Activities</h2><p>Leadership, learning, and experiences that shape my professional journey.</p></div><div class="activities"><article class="activity" id="rotaract-event"><div class="activity-gallery"><a href="https://drive.google.com/file/d/1hIOQH4U5L_3ZhsqAQjfsv4mtjsfYHvZB/view" target="_blank" rel="noreferrer"><img src="https://drive.google.com/thumbnail?id=1hIOQH4U5L_3ZhsqAQjfsv4mtjsfYHvZB&amp;sz=w1200" alt="Rotaract Jaffna Heritage event"></a><a href="https://drive.google.com/file/d/1hJ59WIViRVn5edGVlRW8k-YzTzdvH8BC/view" target="_blank" rel="noreferrer"><img src="https://drive.google.com/thumbnail?id=1hJ59WIViRVn5edGVlRW8k-YzTzdvH8BC&amp;sz=w1200" alt="Rotaract Jaffna Heritage community event"></a></div><div class="activity-content"><p class="activity-meta">One event / one experience</p><h3>Rotaract Jaffna Heritage</h3><p class="activity-preview">Proudly stepping into community leadership as Secretary of Rotaract Jaffna Heritage.</p><button class="show-all" type="button" aria-expanded="false" aria-controls="rotaract-details">Show All <i class="fas fa-arrow-down"></i></button><div class="activity-details" id="rotaract-details" aria-hidden="true"><div><h3>Secretary, Rotaract Jaffna Heritage</h3><p>I am proud to be announced as a Secretary of Rotaract Jaffna Heritage, taking on a role built around service, responsibility, and meaningful community work.</p><p>This opportunity strengthens my leadership, coordination, and communication while allowing me to contribute to preserving and celebrating our shared heritage.</p></div></div></div></article><article class="activity" id="interview-workshop"><div class="activity-gallery"><a href="https://drive.google.com/file/d/1361BvPBcgxtC9ZxPXO8f_QgA5YqG3ghY/view" target="_blank" rel="noreferrer"><img src="https://drive.google.com/thumbnail?id=1361BvPBcgxtC9ZxPXO8f_QgA5YqG3ghY&amp;sz=w1200" alt="From Campus to Corporate workshop"></a></div><div class="activity-content"><p class="activity-meta">Professional development</p><h3>From Campus to Corporate</h3><p class="activity-preview">A valuable workshop on becoming interview ready and workplace ready.</p><button class="show-all" type="button" aria-expanded="false" aria-controls="workshop-details">Show All <i class="fas fa-arrow-down"></i></button><div class="activity-details" id="workshop-details" aria-hidden="true"><div><h3>From Campus to Corporate – Be Interview Ready, Be Workplace Ready</h3><p>Grateful to have attended the “From Campus to Corporate – Be Interview Ready, Be Workplace Ready” workshop conducted by Mr. <a href="https://www.linkedin.com/in/shabir-shabdeen/" target="_blank" rel="noreferrer">Shabiir Shahabdeen</a>, CEO of ThinkUnlimited and Corporate Lead Trainer.</p><p>The session provided valuable insights into interview preparation, workplace professionalism, communication, and the skills needed to transition successfully from university to the corporate world.</p><p>It was a great learning experience, and I’m thankful to SLIIT Northern Uni for organizing such an impactful event.</p><p>Looking forward to applying these lessons as I continue my journey toward a career in Software Engineering.</p></div></div></div></article></div></div></section>
+    <section id="certificates"><div class="container"><div class="section-heading"><h2>Certificates</h2><p>Focused learning that supports my software engineering foundation.</p></div><div class="resume-block"><div class="certification"><i class="fas fa-certificate"></i><span><a href="https://drive.google.com/file/d/1FCJW2a9CkUY9aftgtAKFTr4APVgPG-s6/view" target="_blank" rel="noreferrer"><strong>Python for Beginners</strong></a><br>University of Moratuwa · Centre for Open & Distance Learning (CODL)<br>Completed comprehensive Python fundamentals.</span></div></div></div></section>
+    <section id="contact"><div class="container contact"><div class="contact-grid"><div><p class="eyebrow" style="color:#ff987d;">Have a role or project in mind?</p><h2>Let’s build something useful.</h2><p>Open to software engineering and web development internship opportunities.</p></div><div class="contact-links"><a href="mailto:krishothprabakaran@gmail.com"><i class="fas fa-envelope"></i>krishothprabakaran@gmail.com</a><a href="tel:+94767520147"><i class="fas fa-phone"></i>+94 76 752 0147</a><a href="https://github.com/Kirishoth-Prabakaran" target="_blank" rel="noreferrer"><i class="fab fa-github"></i>github.com/Kirishoth-Prabakaran</a><a href="https://www.linkedin.com/in/kirishoth" target="_blank" rel="noreferrer"><i class="fab fa-linkedin"></i>LinkedIn: Kirishoth</a><a href="./Portfolio.html"><i class="fas fa-globe"></i>Portfolio</a></div></div></div></section>
+  </main>
+  <script>
+    document.querySelectorAll('.show-all').forEach((showAllButton) => {
+      showAllButton.addEventListener('click', () => {
+        const activityCard = showAllButton.closest('.activity');
+        const activityDetails = activityCard.querySelector('.activity-details');
+        const isExpanded = activityCard.classList.toggle('is-expanded');
+        showAllButton.setAttribute('aria-expanded', isExpanded);
+        activityDetails.setAttribute('aria-hidden', !isExpanded);
+        showAllButton.innerHTML = isExpanded
+          ? 'Show Less <i class="fas fa-arrow-up"></i>'
+          : 'Show All <i class="fas fa-arrow-down"></i>';
+      });
+    });
+  </script>
+  <footer><div class="container">© 2026 Kirishoth Prabakaran · Software Engineering Portfolio</div></footer>
+</body>
+</html>
